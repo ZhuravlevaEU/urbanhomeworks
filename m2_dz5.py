@@ -1,21 +1,20 @@
 # Задача "Матрица воплоти":
 def get_matrix(n, m, value):
-    n = int(input('Введите количество строк матрицы (2, 3, 4)')) - 1
-    m = int(input('Введите количество столбцов матрицы (2, 5, 2)')) - 1
-    value = int(input('Введите значение переменной (10, 42, 13)'))
+    matrix = []
     index1 = 0
-    for index1 in range(n):
-        # добавляю пустой список в matrix
-        matrix = []
-        index2 = 0
-        for index2 in range(m):
-            matrix = [n, m, value]
-            break
-        break
-    print(matrix)
-    return n, m, value
+    index2 = 0
 
-n = int(input('Введите количество строк матрицы (2, 3, 4)')) - 1
-m = int(input('Введите количество столбцов матрицы (2, 5, 2)')) - 1
-value = int(input('Введите значение переменной (10, 42, 13)'))
-get_matrix(n, m, value)
+    for index1 in range(n):
+        matrix.append([])
+
+        for index2 in range(m):
+            matrix.append(value)
+    return matrix
+
+
+result1 = get_matrix(2, 2, 10)
+result2 = get_matrix(3, 5, 42)
+result3 = get_matrix(4, 2, 13)
+print(result1)
+print(result2)
+print(result3)
