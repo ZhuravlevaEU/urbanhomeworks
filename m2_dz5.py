@@ -8,7 +8,7 @@ def get_matrix(n, m, value):
         matrix.append([])
 
         for index2 in range(m):
-            matrix.append(value)
+            matrix[index1].append(value)
     return matrix
 
 
