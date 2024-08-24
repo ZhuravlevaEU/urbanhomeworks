@@ -5,7 +5,7 @@ def count_calls():
     calls += 1
     return calls
 
-str = input('Введите слово прописными буквами: ')
+str = input('Введите слово: ')
 list(str)
 
 def string_info(str):
@@ -16,12 +16,11 @@ def string_info(str):
     return a, b, c
 
 el = input('Введите строку: ')
-i = 0
 
-def is_contains(str, el):
+def is_contains(str, seach_list):
     count_calls()
     str = str.lower()
-    for el in el:
+    for el in seach_list:
         if el.lower() == str:
             return True
     return False
