@@ -1,7 +1,7 @@
 # "2 program"
-name = 'Топинамбур'
-print(name[0])
-print(name[-1])
-print(name[5:])
-print(name[::-1])
-print(name[1::2])
+a = 'Топинамбур'
+print(a[0]) # Т
+print(a[-1]) # р
+print(a[len(a) // 2:]) # амбур
+print(a[::-1]) # слово наоборот
+print(a[1::2]) # каждый второй символ
