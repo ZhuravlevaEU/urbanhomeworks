@@ -1,7 +1,7 @@
 # Задача "Однокоренные" (произв число параметров
 
 def single_root_words(root_word, *other_words):
-    if root_word in other_words or other_words in root_word:
+    if root_word in lower(other_words) or other_words in lower(root_word):
         same_words = []
         print(same_words)
     else:
