@@ -1,11 +1,13 @@
 # Задача "Однокоренные" (произв число параметров)
 
 def single_root_words(root_word, *other_words):
-    if root_word in other_words.lower() or other_words in root_word.lower():
-        same_words = []
-        print(same_words)
-    else:
+    same_words = []
 
+    for string in other_words:
+        if root_word.lower()  in other_words.lower() or other_words.lower()  in root_word.lower():
+            same_words.append(string)
+
+    return same_words
 
 result1 = single_root_words('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
 result2 = single_root_words('Disablement', 'Able', 'Mable', 'Disable', 'Bagel')
