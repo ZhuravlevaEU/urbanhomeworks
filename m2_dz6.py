@@ -8,7 +8,7 @@ str_ = ''
 for i in range(1, number):
     for j in range(i + 1, number):
         if number % (i + j) == 0:
-            str_ = str(i) + str(j)
+            str_ += str(i) + str(j)
     pass
 
 print(number, '-', str_)
