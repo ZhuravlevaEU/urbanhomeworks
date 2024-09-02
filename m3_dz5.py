@@ -1,12 +1,13 @@
 # Рекурсивное умножение цифр
 def get_multiplied_digits(number):
+    str_number = str(number)
+    first = int(str_number[0])
     if len(str_number) > 1:
-        return str_number
-    else:
-        return number * get_multiplied_digits(int(str_number[number]))
-    print(get_multiplied_digits(number))
+        return first * get_multiplied_digits(int(str_number[1:]))
+    if first != 0:
+        return first
+    return 1
 
 number = 40203
-str_number = str(int(number))
 result = get_multiplied_digits(number)
 print(result)
