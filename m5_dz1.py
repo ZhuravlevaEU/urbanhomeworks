@@ -6,7 +6,7 @@ class House:
         self.number_of_floor = number_of_floor
         self.go_tu = go_tu
 
-    def go_tu(self):
+    def go_tu(self, number_of_floor):
         if new_floor > self.number_of_floor or new_floor < self.number_of_floor:
             print(f'Название {self.name} этажность {number_of_floor}')
         else:
