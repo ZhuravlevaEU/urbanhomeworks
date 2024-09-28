@@ -1,17 +1,17 @@
 class House:
 
-
     def __init__(self, name, number_of_floor, go_tu):
         self.name = name
         self.number_of_floor = number_of_floor
         self.go_tu = go_tu
 
     def go_tu(self, number_of_floor):
-        if new_floor > self.number_of_floor or new_floor < self.number_of_floor:
+        if number_of_floor > self.number_of_floor or number_of_floor < self.number_of_floor:
             print(f'Название {self.name} этажность {number_of_floor}')
         else:
             print('Такого этажа нет')
-            for new_floor = range(number_of_floor):
+            for new_floor in range(number_of_floor):
+                print('Введите число этажей')
 
 
 h1 = House('ЖК Горский', 18)
