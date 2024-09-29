@@ -3,7 +3,7 @@ class House:
     def __init__(self, name, number_of_floor, go_to):
         self.name = name
         self.number_of_floor = number_of_floor
-        self.go_tu = go_to
+        
 
     def go_to(self, number_of_floor):
         if number_of_floor > self.number_of_floor or number_of_floor < self.number_of_floor:
