@@ -13,12 +13,11 @@ class House:
             print('Такого этажа нет')
 
     def __len__(self):
-        return(f'Название {self.name} этажность {self.number_of_floor}')
+        return self.number_of_floor
 
 
     def __str__(self):
-        print(f'Название {self.name} этажность {number_of_floor}')
-
+        print(f'Название {self.name} этажность {self.number_of_floor}')
 
 
 
@@ -35,5 +34,6 @@ print(len(h2))
 
 print(h1.name, h1.number_of_floor)
 print(h2.name, h2.number_of_floor)
+
 
 
