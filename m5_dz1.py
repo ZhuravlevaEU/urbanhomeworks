@@ -1,9 +1,9 @@
 class House:
 
-    def __init__(self, name, number_of_floor):
+    def __init__(self, name, floors):
         self.name = name
-        self.number_of_floor = number_of_floor
-        
+        self.number_of_floor = floors
+
 
     def go_to(self, number_of_floor):
         if number_of_floor > self.number_of_floor or number_of_floor < self.number_of_floor:
