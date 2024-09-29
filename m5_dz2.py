@@ -1,39 +1,29 @@
 class House:
 
-    def __init__(self, name, number_of_floor):
+    def __init__(self, name, floors):
         self.name = name
-        self.number_of_floor = number_of_floor
+        self.number_of_floors = floors
 
-    def go_to(self, number_of_floor):
-        if number_of_floor > self.number_of_floor or number_of_floor < self.number_of_floor:
-            print(f'Название {self.name} этажность {number_of_floor}')
-            for new_floor in range(number_of_floor):
-                print(new_floor)
+    def go_to(self, number_of_floors):
+        if number_of_floors > self.number_of_floors or number_of_floors < self.number_of_floors:
+            print(f'Название {self.name} этажность {number_of_floors}')
+            for new_floors in range(number_of_floors):
+                print(new_floors)
         else:
             print('Такого этажа нет')
 
-    def __len__(self):
-        return self.number_of_floor
-
-
     def __str__(self):
-        print(f'Название {self.name} этажность {self.number_of_floor}')
+        return f'Название {self.name}, кол-во этажей: {self.number_of_floors}'
 
+    def __len__(self):
+        return self.number_of_floors
 
 
 h1 = House('ЖК Эльбрус', 10)
 h2 = House('ЖК Акация', 20)
 
-# __str__
 print(h1)
 print(h2)
 
-# __len__
 print(len(h1))
 print(len(h2))
-
-print(h1.name, h1.number_of_floor)
-print(h2.name, h2.number_of_floor)
-
-
-
