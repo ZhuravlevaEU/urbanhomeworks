@@ -1,6 +1,6 @@
 class House:
 
-    def __init__(self, name, number_of_floor, go_to):
+    def __init__(self, name, number_of_floor):
         self.name = name
         self.number_of_floor = number_of_floor
         
