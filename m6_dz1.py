@@ -1,35 +1,37 @@
 # Наследование классов
 class Animal:
-    def __init__(self, name, alive, fed): # живой, накормленный
+    def __init__(self, name, alive, fed): # живой, сытый
         self.name = name
-        self.alive = alive
-        self. fed - fed
+        self.alive = True
+        self.fed = False
+        self.edible = False
+    def eat(self, food, edible): # еда
+        input('Введите растение', food.name)
+        if food.name == self.edible:
+            print(f'{self.name} съел {food.name}')
+            self.fed = True
+        elif self.food != edible:
+            print(f'{self.name} не стал есть {food.name}')
+            self.alive = False
+class Mammal(Animal):
+    input('Введите животное', self.name)
 
-    class Mammal(Animal):
-        def eat(self, food):
-            if food == edible:
-                print(f'{self.name} съел {food.name}')
-            elif food != edible:
-                print(f'{self.name} не стал есть {food.name}')
+class Predator(Animal):
+    super().__init__(self, food)
 
-    class Predator(Animal):
-        def eat(self, food):
-            if food == edible:
-                print(f'{self.name} съел {food.name}')
-            elif food != edible:
-                print(f'{self.name} не стал есть {food.name}')
 class Platan:
     def __init__(self, name, edible): # съедобный
         self.name = name
-        self.edible = edible
+        self.edible = False
 
-    class Flower(Platan):
-        def eat(self, food):
-            return self.eat(food)
+class Flower(Platan):
+    def eat(self, food):
+        return self.eat(food)
 
-    class Fruit (Platan):
-        def eat(self, food):
-            return self.eat(food)
+class Fruit (Platan):
+    super().__init__(self, edible)
+    def eat(self, food):
+        return self.eat(food)
 
 
 a1 = Predator('Волк с Уолл-Стрит')
