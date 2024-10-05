@@ -1,23 +1,25 @@
 # Множественное наследование
-class Horse: # класс лошадь
+class Horse:
+
     def __init__(self, x_distance, sound):
-        self.x_distance = 0
-        self.sound = 'Frrr'
+        self.x_distance = 0 # пройденный путь
+        self.sound = 'Frrr' # звук, который издаёт лошадь
 
     def run(self, dx):
-        self.dx = dx #путь
+        self.dx = self.x_distance + dx
 
-class Eagl: # класс орел
+class Eagl:  # класс орел
     def __init__(self, y_distance, sound):
-        self.x_distance = 0
+        self.y_distance = 0
         self.sound = 'I train, eat, sleep, and repeat'
-        
-    def fly(self, dy):
-        self.dy = dy #ауть
 
-class Pegasus(Horse): # класс Пегас
-    def __init__(self, x_distance, sound):
+    def fly(self, dy):
+        self.dy = self.y_distance + dy
+
+class Pegasus(Horse, Eagl):  # класс Пегас
+    def __init__(self, x_distance, sound, y_distance, sound):
         super().__init__(x_distance, sound)
+        super().__init__(y_distance, sound)
 
     def move(self, dx, dy):
         super().run(self, dx)
