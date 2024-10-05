@@ -15,7 +15,7 @@ def eat(self, food, edible):  # еда
     elif self.food != edible:
         print(f'{self.name} не стал есть {food.name}')
         self.alive = False
-        
+
 
 class Mammal(Animal):
     input('Введите животное', self.name)
