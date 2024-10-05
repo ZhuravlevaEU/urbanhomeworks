@@ -1,46 +1,37 @@
 # Наследование классов
-class Animal:
-    def __init__(self, name, alive, fed):  # живой, сытый
+class Platan:
+    edible = False
+    def __init__(self, name):  # съедобный
         self.name = name
-        self.alive = True
-        self.fed = False
-        self.edible = False
 
-
-def eat(self, food, edible):  # еда
-    input('Введите растение', food.name)
-    if food.name == self.edible:
-        print(f'{self.name} съел {food.name}')
-        self.fed = True
-    elif self.food != edible:
-        print(f'{self.name} не стал есть {food.name}')
-        self.alive = False
-
+class Animal:
+    alive = True # живой, сытый
+    fed = False
+    def __init__(self, name):
+        self.name = name
+        
+    def eat(self, food):  # еда
+        input('Введите растение', self.food)
+        if self.food == edible:
+            print(f'{self.name} съел {self.food}')
+            self.fed = True
+        elif self.food != edible:
+            print(f'{self.name} не стал есть {self.food}')
+            self.alive = False
 
 class Mammal(Animal):
-    input('Введите животное', self.name)
-
+    pass
 
 class Predator(Animal):
-    super().__init__(self, food)
-
-
-class Platan:
-    def __init__(self, name, edible):  # съедобный
-        self.name = name
-        self.edible = False
-
+    pass
 
 class Flower(Platan):
-    def eat(self, food):
-        return self.eat(food)
-
+    pass
 
 class Fruit(Platan):
-    super().__init__(self, edible)
+    edible = True
+    pass
 
-    def eat(self, food):
-        return self.eat(food)
 
 
 a1 = Predator('Волк с Уолл-Стрит')
