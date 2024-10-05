@@ -17,7 +17,7 @@ class Eagl:  # класс орел
         self.dy = self.y_distance + dy
 
 class Pegasus(Horse, Eagl):  # класс Пегас
-    def __init__(self, x_distance, sound, y_distance, sound):
+    def __init__(self, x_distance, y_distance, sound):
         super().__init__(x_distance, sound)
         super().__init__(y_distance, sound)
 
