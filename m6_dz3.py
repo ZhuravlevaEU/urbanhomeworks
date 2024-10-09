@@ -22,8 +22,8 @@ class Pegasus(Horse, Eagl):  # класс Пегас
         Eagl.__init__(self)
 
     def move(self, dx, dy):
-        super().run(self, dx)
-        super().fly(self, dy)
+        super().run(self.y_distance, dx)
+        super().fly(self.y_distance, dy)
 
     def get_pos(self):
         return f'Положение Пегаса: {self.x_distance}, {self.y_distance}'
