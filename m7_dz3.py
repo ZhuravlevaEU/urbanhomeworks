@@ -1,30 +1,33 @@
-# Оператор with
+# Файлы в ОС
+import os
+import time
 
-class WordsFinder:
-    file_names = []
-    def __init__(self):
-        self.
+directory = os.getcwd()
 
-def custom_write(file, strings):
-    file_name = 'text_k_zadache_7_3.txt'
-    strings = info
-    strings_positions = {}
-    with open(file_name, 'w', encoding='utf-8') as file_name:
-        for string in strings:
-            position = file_name.tell()
-            file_name.write(string + '\n')
-            strings_positions[(len(strings_positions) + 1, position)] = string
-    return strings_positions
+def mkdir_second():
+    if os.path.exists('second'):  # если папка second существует,то
+        os.chdir('second')  # изменим текущий каталог на second
+    else:
+        os.mkdir('second')  # в противном случаем, создадим папку second на рfвне с текущей
+        os.chdir('second')  # изменим текущий каталог на second
+    os.makedirs(r'sortirovka/third/forth')  # создаем вложенные папки
 
-info = [
-    'Если б не было учителя,',
-    'То и не было б, наверное,',
-    ' Ни поэта, ни мыслителя,',
-    ' Ни Шекспира, ни Коперника.']
+for root, dirs, files in os.walk(directory):
+    for file in files:
+        filepath = os.path.join(root, file)  # переменной присваивается значение пути
+        filetime = os.path.getmtime(filepath)  # переменной присваивается время последнего изменения файла
+        # показывает текущую дату в формате
+        formatted_time = time.strftime("%d.%m.%Y %H:%M", time.localtime(filetime))
+        filesize = os.path.getsize(filepath)  # показывает размер файла
+        parent_dir = os.path.dirname(filepath)  # показывает имя каталога-родителя
+        print(f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {filetime}')
 
+print(os.getcwd())  # определим абсолютный путь к рабочей директории
+if os.path.exists('sortirovka/test_dir'):  # если папка test_dir существует,то
+    os.chdir('sortirovka/test_dir')  # изменим текущий каталог на test_dir
+    mkdir_second()
+else:
+    mkdir_second()
 
-
-
-result = custom_write('text_k_zadache_7_3.txt', info)
-for elem in result.items():
-    print(elem)
+print(os.getcwd())  # определим абсолютный путь к рабочей директории
+print(os.listdir())  # проверяем содержимое текущей директории
