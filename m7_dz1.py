@@ -11,25 +11,25 @@ class Product:
 
 class Shop(Product):
     __file_name = 'products.txt'
-    def __init__(self):
-        pass
 
     def get_products(self):
-        file = open(self.__file_name, 'r', encoding = 'utf-8')
-        print(self.__file_name.readablle()) # проверим, можно прочитать файл
-        self.__file_name.close()
-        print(f'{self.product}, {self.weight}, {self.category}')
+        file = open(__file_name, 'r')
+        products = file.read()
+        file.close()
+        return products
 
     def add(self, *products):
-        file.open(self.__file_name, 'w')
-        print(self.__file_name)
-        if self.product in self.__file_name:
-            pprint(self.__file_name.writ('\n*products'))
-        else:
-            print(f'Продукт {self.product} уже есть в магазине')
-        self.__file_name.close()
-        print(self.__file_name)
+        current_products = self. get_products()
+        file = open(self.__file_name, 'a')
+        for product in products:
+            if str(product) not in current_products:
+                file.write(str(products) + '\n')
+                current_products += str(product) + '\n'
+            else:
+                print(f'Продукт {product} уже есть в магазине')
+        file.close()
 
+       
 
 
 s1 = Shop()
