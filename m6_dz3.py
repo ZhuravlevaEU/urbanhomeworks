@@ -5,7 +5,7 @@ class Horse:
         self.x_distance = 0 # пройденный путь
         self.sound = 'Frrr' # звук, который издаёт лошадь
 
-    def run(self, dx):
+    def run(self, x_distance):
         self.x_distance = self.dx + dx
 
 class Eagl:  # класс орел
@@ -13,7 +13,7 @@ class Eagl:  # класс орел
         self.y_distance = 0
         self.sound = 'I train, eat, sleep, and repeat'
 
-    def fly(self, dy):
+    def fly(self, y_distance):
         self.y_distance = self.dy + dy
 
 class Pegasus(Horse, Eagl):  # класс Пегас
@@ -21,7 +21,7 @@ class Pegasus(Horse, Eagl):  # класс Пегас
         Horse.__init__(self)
         Eagl.__init__(self)
 
-    def move(self, dx, dy):
+    def move(dx, dy):
         super().run(self.y_distance, dx)
         super().fly(self.y_distance, dy)
 
