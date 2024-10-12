@@ -1,33 +1,47 @@
-# Файлы в ОС
-import os
-import time
+# Оператор with
 
-directory = os.getcwd()
+class WordsFinder:
+    def __init__(self, *file_names):  # неограниченное число Объектов класса
+        self.file_name = file_names  # запишем объекты в список
 
-def mkdir_second():
-    if os.path.exists('second'):  # если папка second существует,то
-        os.chdir('second')  # изменим текущий каталог на second
-    else:
-        os.mkdir('second')  # в противном случаем, создадим папку second на рfвне с текущей
-        os.chdir('second')  # изменим текущий каталог на second
-    os.makedirs(r'sortirovka/third/forth')  # создаем вложенные папки
 
-for root, dirs, files in os.walk(directory):
-    for file in files:
-        filepath = os.path.join(root, file)  # переменной присваивается значение пути
-        filetime = os.path.getmtime(filepath)  # переменной присваивается время последнего изменения файла
-        # показывает текущую дату в формате
-        formatted_time = time.strftime("%d.%m.%Y %H:%M", time.localtime(filetime))
-        filesize = os.path.getsize(filepath)  # показывает размер файла
-        parent_dir = os.path.dirname(filepath)  # показывает имя каталога-родителя
-        print(f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {filetime}')
+def get_all_words(self):  # - подготовительный метод, который возвращает cловарь
+    all_words = {}  # формируем пустой словарь
+    for file_name in self.file_names:
+        with open(file_name, 'r') as file:  # перебераем названия файлов и открываем каждый из них
+            line = file.read().lower()  # считывая строки переводим все символы в нижний регистр
+            for punctuation in [',', '.', '=', '!', '?', ';', ':', ' - ']:
+                line = line.replace(punctuation, '')  # удаляем знаки препинания из строки
+            words = line.split()  # разделяем строку на части по пробелам
+            all_words[file_name] = words  # запишем в словарь полученные слова, где ключ — название файла,
+            # а значение — список из слов этого файла
+            print(all_words[file_name])  # печать значения по ключу
+    return all_words
 
-print(os.getcwd())  # определим абсолютный путь к рабочей директории
-if os.path.exists('sortirovka/test_dir'):  # если папка test_dir существует,то
-    os.chdir('sortirovka/test_dir')  # изменим текущий каталог на test_dir
-    mkdir_second()
-else:
-    mkdir_second()
+    def find(self, word):  # метод возвращает словарь, где word - искомое слово, где ключ - название файла,
+        # значение - позиция первого такого слова в списке слов этого файла
+        dict_ = {}  # создаем словарь
+        for name, words in self.get_all_words().items():  # перебираем по ключу (названию) и значению (списоку слов);
+            # item() - одновременная итерация
+            if word.lower() in words:  # если строка содержит слово
+                # значение ключа словаря установим в индекс слова в списке слов, увеличенный на 1****
+                dict_[name] = words.index(word.lower()) + 1
+                # возвращаем словарь, где ключ - название файла, значение - позиция первого такого
+                # слова в списке слов этого файла
+        return dict_
 
-print(os.getcwd())  # определим абсолютный путь к рабочей директории
-print(os.listdir())  # проверяем содержимое текущей директории
+    def count(self, word):  # метод возвращает словарь, где word - искомое слово, ключ - название файла,
+        # значение - количество слов wordв списке слов этого файла
+        dict_ = {} # создаем словарь
+        for name, words in self.get_all_words().items():  # перебираем по ключу (названию) и значению (списоку слов)
+            # значение ключа словаря установим в индекс слова в списке слов, увеличенный на 1****
+            dict_[name] = words.count(word.lower())
+            # возвращаем словарь, где ключ - название файла, значение - позиция первого такого
+            # слова в списке слов этого файла
+        return dict_
+
+
+finder2 = WordsFinder('test_file.txt')
+print(finder2.get_all_words()) # Все слова
+print(finder2.find('TEXT')) # 3 слово по счёту
+print(finder2.count('teXT')) # 4 слова teXT в тексте всего
