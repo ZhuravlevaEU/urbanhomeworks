@@ -7,13 +7,13 @@ class Product:
         self.category = category # категория товара
 
     def __str__(self):
-        print(f'{self.product}, {self.weight}, {self.category}')
+        return f'{self.product}, {self.weight}, {self.category}'
 
-class Shop(Product):
+class Shop:
     __file_name = 'products.txt'
 
     def get_products(self):
-        file = open(__file_name, 'r')
+        file = open(Shop.__file_name, 'r')
         products = file.read()
         file.close()
         return products
@@ -29,7 +29,7 @@ class Shop(Product):
                 print(f'Продукт {product} уже есть в магазине')
         file.close()
 
-       
+
 
 
 s1 = Shop()
