@@ -15,7 +15,7 @@ class Car:
         if self.__is_valid_numbers(numbers):
             self.__numbers = numbers  # номера автомобиля (строка)
 
-    def __is_valid_vin(vin_numbers):  # проверка на корректность vin-номер
+    def __is_valid_vin(self, vin_numbers):  # проверка на корректность vin-номер
         if not isinstance(vin_numbers, int):
             raise IncorrectVinNumbers("Vin-номер не корректный")
         elif vin_numbers not in range(1000000, 9999999):
@@ -23,7 +23,7 @@ class Car:
             f'Диапазон: 1000000-9999999 Ваш Vin номер: {vin_numbers}')
         return True
 
-    def __is_valid_numbers(numbers):  # проверяет на корректность номер автомобиля
+    def __is_valid_numbers(self, numbers):  # проверяет на корректность номер автомобиля
         if not isinstance(numbers, str):
             raise IncorrectCarNumbers("Тип номера не корректный")
         elif len(numbers) != 6:
@@ -43,7 +43,7 @@ else:
 
 try:
   second = Car('Model2', 300, 'т001тр')
-except IncorrectVinNumber as exc:
+except IncorrectVinNumbers as exc:
   print(exc.message)
 except IncorrectCarNumbers as exc:
   print(exc.message)
@@ -52,7 +52,7 @@ else:
 
 try:
   third = Car('Model3', 2020202, 'нет номера')
-except IncorrectVinNumber as exc:
+except IncorrectVinNumbers as exc:
   print(exc.message)
 except IncorrectCarNumbers as exc:
   print(exc.message)
