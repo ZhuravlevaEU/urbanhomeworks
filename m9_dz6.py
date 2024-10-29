@@ -2,16 +2,12 @@
 from itertools import combinations
 
 def all_variants(text):
-    text = []
-    for i in range(1, len(text)+1):
-        b = combinations(text, i)
-        list.extend(b)
-        for j in list:
-            j = list[j]
-            yield (''.join(j))
+    for i in range(len(text)):
+        for j in range(i, len(text)):
+            yield text[i: j+1]
 
 
-a = all_variants("abcabc")
+a = all_variants("abc")
 print(a)
 
 for i in a:
