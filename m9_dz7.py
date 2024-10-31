@@ -1,15 +1,18 @@
 # задание по теме "Декораторы"
-def my_decorator(is_prime):
-    def is_prime(*args):
-        if sum_three(a, b, c) %  sum_three(a, b, c):
-            print(f'Простое')
-        else:
-            print(f'Составное')
-    result = is_prime(*args)
-    return is_prime
-@my_decorator
-def sum_three(a, b, c)
-    return a + b + c
+def decorator(func):
+    def wrapper(*args: int): # функция-обложка
+        result = func(*args)
+        for div in range(2, result):
+            if result % div == 0:
+                print(f'Составное')
+                break
+            else:
+                print(f'Простое')
+    return wrapper
+@is_prime
+def sum_three(first, second, third):
+    print(first+second+third)
+    return first+second+third
 
 result = sum_three(2, 3, 6)
 print(result)
