@@ -8,7 +8,7 @@ class Knight(threading.Thread): # создаем свой класс
     def __init__(self, str, int):
         threading.Thread.__init__(self)
         self.str = str # имя рыцаря
-        self.int = 100 # сила его
+        self.int = int # сила его
 
     def run (self):
         print(f'{self.str}, на нас напали!')
@@ -21,9 +21,9 @@ class Knight(threading.Thread): # создаем свой класс
             if enemies_counter < self.int:
                 enemies_counter = 0
             print(f'{self.str} сражается {day} кол-во дней, осталось {enemies_counter} воинов')
-            sleep(1)
+            time.sleep(1)
 
-        print(f'{self.str} одержал победу за {self.counter} день(дней).')
+        print(f'{self.str} одержал победу за {enemies_counter} день(дней).')
 
 
 # Создаем 2a потока с аргументами из задачи
