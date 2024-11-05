@@ -5,22 +5,25 @@ import time
 
 
 class Knight(threading.Thread): # создаем свой класс
-def __init__(self, str, int, counter, delay):
-    threading.Thread.__init__(self)
-    self.str = str
-    self.int = 100
-    self.counter = 0
-    self.delay = delay
+    def __init__(self, str, int):
+        threading.Thread.__init__(self)
+        self.str = str # имя рыцаря
+        self.int = 100 # сила его
 
-def run (self):
-    print(f'{self.str}, на нас напали!')
-    time.sleep(1) # прошел один день
-    while self.int < 100:
-        print(f'{self.str} сражается {self.counter} кол-во дней, осталось {self.int} воинов')
-        self.counter +=1
-        self.int -=1
+    def run (self):
+        print(f'{self.str}, на нас напали!')
+        time.sleep(1) # прошел один день
+        enemies_counter = 100 # количество воинов
+        day = 0 # количество дней сражения
+        while self.int > 0:
+            enemies_counter -= self.int
+            day += 1
+            if enemies_counter < self.int:
+                enemies_counter = 0
+            print(f'{self.str} сражается {day} кол-во дней, осталось {enemies_counter} воинов')
+            sleep(1)
 
-    print(f'        {self.str} одержал победу за {self.counter} день(дней).')
+        print(f'{self.str} одержал победу за {self.counter} день(дней).')
 
 
 # Создаем 2a потока с аргументами из задачи
