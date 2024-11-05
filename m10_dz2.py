@@ -12,18 +12,17 @@ class Knight(threading.Thread): # создаем свой класс
 
     def run (self):
         print(f'{self.str}, на нас напали!')
-        time.sleep(1) # прошел один день
         enemies_counter = 100 # количество воинов
         day = 0 # количество дней сражения
-        while self.int > 0:
+        while enemies_counter > 0:
             enemies_counter -= self.int
             day += 1
             if enemies_counter < self.int:
                 enemies_counter = 0
             print(f'{self.str} сражается {day} кол-во дней, осталось {enemies_counter} воинов')
-            time.sleep(1)
+            time.sleep(1) # прошел один день
 
-        print(f'{self.str} одержал победу за {enemies_counter} день(дней).')
+        print(f'{self.str} одержал победу за {day} день(дней).')
 
 
 # Создаем 2a потока с аргументами из задачи
