@@ -10,44 +10,36 @@ class Bank:
         self.lock = threading.Lock()
 
     def deposit(self):  # пополнение
-        counter = 0
-        while counter < 100:
+        for i in range(100):
             bk = random.randint(50, 500)  # запрос средств
-            self.lock.release()  # снимаем блок
-            try:
-                self.balance += bk
-                print(f'Пополнение: {bk}. Баланс: {self.balance}\n')
-            except Exception:
-                pass
-            finally:
-                time.sleep(0.01)
-                counter += 1
+            self.balance += bk
+            print(f'Пополнение: {bk}. Баланс: {self.balance}\n')
+            if self.lock.locked() and self.balanse > 500:
+                self.lock.release()  # снимаем блок
+
+            time.sleep(0.01)
 
     def take(self):  # снятие
-        counter = 0
-        self.lock.acquire()  # устанавливаем блок
-        while counter < 100:
+        for i in range(100):
             bk = random.randint(50, 500)  # запрос средств
             print(f'Запрос на {bk}')
-            try:
-                if bk <= self.balance:
-                    self.balance -= bk
-                    print(f'Снятие: {bk}. Баланс: {self.balance}\n')
-                else:
-                    print('Запрос отклонён, недостаточно средств')
-            finally:
-                time.sleep(0.01)
-                counter += 1
+            if bk <= self.balance:
+                self.balance -= bk
+                print(f'Снятие: {bk}. Баланс: {self.balance}\n')
+            else:
+                print('Запрос отклонён, недостаточно средств')
+                self.lock.acquire()  # устанавливаем блок
+            time.sleep(0.01)
 
+if __name__ == '__main__':
+    bk = Bank()
+    # Т.к. методы принимают self, в потоки нужно передать сам объект класса Bank
+    thread1 = threading.Thread(target=Bank.deposit, args=(bk,))
+    thread2 = threading.Thread(target=Bank.take, args=(bk,))
 
-bk = Bank()
-# Т.к. методы принимают self, в потоки нужно передать сам объект класса Bank
-thread1 = threading.Thread(target=Bank.deposit, args=(bk,))
-thread2 = threading.Thread(target=Bank.take, args=(bk,))
+    thread1.start()
+    thread2.start()
+    thread1.join()
+    thread2.join()
 
-thread1.start()
-thread2.start()
-thread1.join()
-thread2.join()
-
-print(f'Итоговый баланс: {bk.balance}')
+    print(f'Итоговый баланс: {bk.balance}')
