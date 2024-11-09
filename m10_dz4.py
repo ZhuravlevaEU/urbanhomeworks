@@ -6,9 +6,9 @@ import threading
 import random
 
 class Table:
-    def __init__(self, number, guest: None): # номер стола и гость, который сидит за этим столом (по умолчанию None)
+    def __init__(self, number): # номер стола и гость, который сидит за этим столом (по умолчанию None)
         self.number = number
-        self.guest = guest
+        self.guest = None
 
 class Guest(threading.Thread):
     def __init__(self, name):
@@ -18,7 +18,7 @@ class Guest(threading.Thread):
     def run(self):
         sleep(randint(3, 10))  # время ожидания заказа
 
-class Cafe(Table, Guest, Queue):
+class Cafe:
     def __init__(self, tables):
         self.queue = Queue()
         self.tables = tables
