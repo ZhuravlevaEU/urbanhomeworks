@@ -28,11 +28,11 @@ class Cafe:
             for table in self.tables:
                 if table.guest is None:
                     guest.start()
-                    print(f'{guest.name} сел(-а) за стол номер {tables.number}')
+                    print(f'{guest.name} сел(-а) за стол номер {table.number}')
                     table.guest = guest
                     break
             else:
-                print(f'{self.guests.Guest} в очереди')
+                print(f'{guest.name} в очереди')
                 self.queue.put(guest)
 
     def discuss_guests(self): # обслуживание гостей
