@@ -1,9 +1,9 @@
 # Задание по теме "Очереди для обмена данными между потоками"
 
 from queue import Queue # импортируем модуль очереди
-import time
+from time import sleep
+from random import randint
 import threading
-import random
 
 class Table:
     def __init__(self, number): # номер стола и гость, который сидит за этим столом (по умолчанию None)
@@ -19,7 +19,7 @@ class Guest(threading.Thread):
         sleep(randint(3, 10))  # время ожидания заказа
 
 class Cafe:
-    def __init__(self, tables):
+    def __init__(self, *tables):
         self.queue = Queue()
         self.tables = tables
 
@@ -28,7 +28,7 @@ class Cafe:
             for table in self.tables:
                 if table.guest is None:
                     guest.start()
-                    print(f'{self.guests.Guest} сел(-а) за стол номер {tables.Table[i]}')
+                    print(f'{guest.name} сел(-а) за стол номер {tables.number}')
                     table.guest = guest
                     break
             else:
