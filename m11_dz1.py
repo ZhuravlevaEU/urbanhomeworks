@@ -1,49 +1,35 @@
 import os, sys
 from PIL import Image
 
-print(im.format, im.size, im.mode)
-PPM (512, 512)
-RGB
-im.open(capitain)
 
-# Конвертируйте файлы в JPEG
-for infile in sys.argv[1:]:
-    f, e = os.path.capitain(infile)
-    outfile = f + ".jpg"
-    if infile != outfile:
-        try:
-            with Image.open(infile) as im:
-                im.save(outfile)
-        except OSError:
-            print("cannot convert", infile)
 
-# Создание миниатюр в формате JPEG
-size = (128, 128)
+filename = "cat.jpg"
+with Image.open("cat.jpg") as img: # открываем файл
+    img.load() # чтения в память, чтобы теперь файл можно было закрыть файл
 
-for infile in sys.argv[1:]:
-    outfile = os.path.capitain(infile)[0] + ".thumbnail"
-    if infile != outfile:
-        try:
-            with Image.open(infile) as im:
-                im.thumbnail(size)
-                im.save(outfile, "JPEG")
-        except OSError:
-            print("cannot create thumbnail for", infile)
+img.show()
 
-# Идентификация файлов изображений
-for infile in sys.argv[1:]:
-    try:
-        with Image.open(infile) as im:
-            print(infile, im.format, f"{im.size}x{im.mode}")
-    except OSError:
-        pass
+print(img.format, img.size, img.mode)
+type(img)
+print(isinstance(img, Image.Image)) # True
+# кадрируем - вырезаем область
+# левый верхний и правый нижний углы вырезаемой области
+cropped_img = img.crop((300, 150, 700, 1000))
+# возвращаем полученное изображение размером 400х850
+cropped_img.show()
+(400, 850)
+# сжимаем область (фрагмент) в 4 раза (с доп.параметрами) и возвращаем изображение
+low_resize_img = cropped_img.resize((cropped_img.width // 4, cropped_img.height // 4))
+# масштабируем другим способом и возвращаем изображение
+low_resize_img.show(4)
+# сохраняем полученный рисунок
+cropped_img.save("cropped_image.jpg")
+low_resize_img.save("low_resolution_cropped_image.png")
+# поворот исходного изображения
+converted_img = img.transpose(Image.FLIP_TOP_BOTTOM)
+converted_img.show()
+# ротация на произвольный угол
+rotated_img = img.rotate(45)
+rotated_img.show()
 
-# Вырезание, вставка и объединение изображений
-# Копирование подпрямоугольника из изображения
-# Область определяется 4-кортежем, координаты — (левая, верхняя, правая, нижняя)
-box = (0, 0, 64, 64)
-region = im.crop(box)
-# Обработка подпрямоугольника и вставка его обратно
-region = region.transpose(Image.Transpose.ROTATE_180) # область, транспонировать, поворот 180 град
-im.paste(region, box) # вставить область прямоугольник
-
+# использовала стаью https://habr.com/ru/articles/681248/
