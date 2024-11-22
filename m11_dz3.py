@@ -1,7 +1,9 @@
 # Задание по теме "Интроспекция"
 # Пример 1 - Изучаем свойства объектов с помощью интроспекции
-from inspect import getmodule
 
+
+from pprint import pprint
+from inspect import getmodule
 
 """def introspection_info(obj):
    return {
@@ -17,7 +19,6 @@ obj = MyClass()
 
 number_info = introspection_info(obj)
 print(number_info)"""
-
 
 # Пример 2 - # Исследуем класс с объектом
 
@@ -40,23 +41,24 @@ class MyClass:
 
 
 example = MyClass(20,'Lin')
-print(example.print_user())
-print(example.__dict__)
-number_info = introspection_info(MyClass)
-print(number_info)"""
+print(type (example)) # проверяем тип объекта
+print(dir(example.print_user())) # вызываем методы и атрибуты
+print(example.__dict__) # вызываем атрибуты"""
+
 
 # Пример 3 - # Исследуем
-def introspection_info(obj):
-    obj.type = type(obj).__name__
+def introsp_info(obj):
+    obj_type = type(obj).__name__
     attributes = dir(obj)
-    result = [attr for attr in attributes if not callable(getattr(obj, attr))]
+    attrs = [attr for attr in attributes if not callable(getattr(obj, attr))]
     methods = [method for method in attributes if callable(getattr(obj, method))]
-    module = obj.__class__.__moduie__
+    module = obj.__class__.__module__
 
-    introspection_info(obj) = {'type': type(obj), 'attributes': result,
-        'methods': methods, 'modul': module}
+    introsp_info = {'type': obj_type, 'attributes': attrs,
+                         'methods': methods, 'module': module}
 
-    return introspection_info
+    return introsp_info
 
-number_info = introspection_info(42)
-print(number_info)
+
+info = introsp_info(42)
+pprint(info)
